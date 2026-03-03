@@ -1,7 +1,5 @@
 var textWrapper = document.querySelector(".ml1 .letters");
-
-if (textWrapper) {
-    textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");}
+textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 var i = 0;
 var txt = `Jujur, waktu kita sempat putus, rasanya ada bagian dari hidup aku yang kosong.
 Dan sekarang kamu balik lagi, rasanya kayak Tuhan ngasih kesempatan kedua yang nggak mau aku sia-siain.
@@ -38,6 +36,7 @@ anime.timeline({ loop: true })
     delay: 1000,
 });
 
+var elem = document.getElementById("bodi");
 document.addEventListener("DOMContentLoaded", function () {
 
     var textWrapper = document.querySelector(".ml1 .letters");
@@ -57,12 +56,15 @@ Terima kasih udah milih aku lagi. Kali ini aku nggak cuma mau jadi pacar kamu…
     var speed = 90;
 
     function openFullscreen() {
-    document.getElementById("tembok1").style.display = "none";
-    document.getElementById("tembok2").style.display = "block";
+        document.getElementById("tembok1").style.display = "none";
+        document.getElementById("tembok2").style.display = "block";
 
-    var sound = document.getElementById("mySound");
-    if (sound) sound.play().catch(() => {});
+        var sound = document.getElementById("mySound");
+        if (sound) sound.play().catch(() => {});
+        
+        Gassngetik();
     }
+
     window.openFullscreen = openFullscreen;
 
     function Gassngetik() {
@@ -71,5 +73,6 @@ Terima kasih udah milih aku lagi. Kali ini aku nggak cuma mau jadi pacar kamu…
             i++;
             setTimeout(Gassngetik, speed);
         }
-      }
-    })
+    }
+
+});
