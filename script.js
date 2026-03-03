@@ -1,5 +1,7 @@
 var textWrapper = document.querySelector(".ml1 .letters");
-textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+if (textWrapper) {
+    textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");}
 var i = 0;
 var txt = `Jujur, waktu kita sempat putus, rasanya ada bagian dari hidup aku yang kosong.
 Dan sekarang kamu balik lagi, rasanya kayak Tuhan ngasih kesempatan kedua yang nggak mau aku sia-siain.
@@ -36,34 +38,38 @@ anime.timeline({ loop: true })
     delay: 1000,
 });
 
-var elem = document.getElementById("bodi");
+document.addEventListener("DOMContentLoaded", function () {
 
-function openFullscreen() {
-  if (elem.requestFullscreen) {
-    elem.requestFullscreen();   
-    document.getElementById("tembok1").style.display = "none";
-    document.getElementById("tembok2").style.display = "block";
-    document.getElementById('mySound').play();
-    Gassngetik();
-  } else if (elem.webkitRequestFullscreen) { /* Safari */
-    elem.webkitRequestFullscreen();
-    document.getElementById("tembok1").style.display = "none";
-    document.getElementById("tembok2").style.display = "block";
-    document.getElementById('mySound').play();
-    Gassngetik();
-  } else if (elem.msRequestFullscreen) { /* IE11 */
-    elem.msRequestFullscreen();
-    document.getElementById("tembok1").style.display = "none";
-    document.getElementById("tembok2").style.display = "block";
-    document.getElementById('mySound').play();
-    Gassngetik();
-  }
-}
+    var textWrapper = document.querySelector(".ml1 .letters");
 
-function Gassngetik() {
-    if (i < txt.length) {
-        document.getElementById("tekss").innerHTML += txt.charAt(i);
-        i++;
-        setTimeout(Gassngetik, speed);
+    if (textWrapper) {
+        textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
     }
-}
+
+    var i = 0;
+    var txt = `Jujur, waktu kita sempat putus, rasanya ada bagian dari hidup aku yang kosong.
+Dan sekarang kamu balik lagi, rasanya kayak Tuhan ngasih kesempatan kedua yang nggak mau aku sia-siain.
+
+Aku nggak janji hubungan ini bakal selalu sempurna, tapi aku janji aku bakal lebih jaga kamu, lebih dengerin kamu, dan lebih sayang sama kamu.
+
+Terima kasih udah milih aku lagi. Kali ini aku nggak cuma mau jadi pacar kamu… aku mau jadi rumah yang selalu kamu tuju 💕`;
+
+    var speed = 90;
+
+    function openFullscreen() {
+    document.getElementById("tembok1").style.display = "none";
+    document.getElementById("tembok2").style.display = "block";
+
+    var sound = document.getElementById("mySound");
+    if (sound) sound.play().catch(() => {});
+    }
+    window.openFullscreen = openFullscreen;
+
+    function Gassngetik() {
+        if (i < txt.length) {
+            document.getElementById("tekss").innerHTML += txt.charAt(i);
+            i++;
+            setTimeout(Gassngetik, speed);
+        }
+      }
+    })
